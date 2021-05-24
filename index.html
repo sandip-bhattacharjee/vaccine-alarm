@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="script.js"></script>
+<html>
+<head>
+<title>Vaccine Alarm</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="fullbody" onload="getState()">
+<center>
+<div id="header">
+<h1>Covid 19 Vaccine Alarm </h1>
+</div>
+<div id="subheader">
+<h2>We feel your pain of searching for vaccination slots with no luck. Select your district and minimum age from the list. Click on Start and keep it running. You will get an alarm when vaccine is available in any of the center. Keep maximum volume in your device so that you can hear when it shouts. <button id="testbutton" onclick="playTestSound()">Play</button> test alarm now.</h2>
+
+</div>
+</center>
+<div id="body-content">
+<center>
+<table>
+<tr>
+<td class = "label">
+<h2>State   :</h2>
+</td>
+<td>
+<select class="dropdown" id="state" onchange="getDistrict();getCenters();">
+    <option>Select</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class = "label">
+<h2>District   :</h2>
+</td>
+<td>
+<select class="dropdown" id="district" onChange="getCenters()">
+    <option>Select</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class = "label">
+<h2>Centers   :</h2>
+</td>
+<td>
+<select name="centers" class="dropdown" id="centers" multiple>
+  <option>Select</option>
+</select>
+</td>
+</tr>
+<tr>
+<td class = "label">
+<h2>Minimum Age   :</h2>
+</td>
+<td>
+<select class="dropdown" id="minage">
+    <option>Select</option>
+	<option>18</option>
+	<option>45</option>
+  </select>
+</td>
+</tr>
+<tr>
+<td class = "label">
+<h2>Dose   :</h2>
+</td>
+<td>
+<select class="dropdown" id="dose">
+    <option>Select</option>
+	<option>First</option>
+	<option>Second</option>
+  </select>
+</td>
+</tr>
+</table>
+ </br>
+<div id="buttongroup">
+<center>
+	<button class="startStopButton" id="startButton" onclick="startAPI()"> Start </button>
+	<button class="startStopButton" id="stopButton" disabled=true onclick="stopAPI()"> Stop </button>
+</center>
+</div>
+<hr>
+<div id="timestampdiv">
+<table>
+<tr>
+<td>
+<div class="loader"></div>
+</td>
+<td>
+<h2  id = "timestamp"> Not Running </h2>
+</td>
+<td>
+<div class="loader"></div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div id = "result">
+</div>
+<div id ="gad">
+<script data-ad-client="ca-pub-2135454335249404" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</div>
+</center>
+<audio hidden id="audio" controls>
+  <source src="alarm.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
